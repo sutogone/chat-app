@@ -16,6 +16,13 @@
         <label class='chat-room-form__label' for='chat_room_チャットメンバー'>チャットメンバー</label>
       </div>
       <div class='chat-room-form__field--right'>
+        <select name="room[user_ids][]">  <%# roomというハッシュからuser_idsというハッシュに値が格納され、さらにその値がuser_idsの空の配列の中身に格納される%>
+          <option value="">チャットするユーザーを選択して下さい</option>
+            <%= User.where.not(id: current_user.id).each do |user| %>  <%#userモデルから全てのデータをeachで取り出す%>
+              <option value=<%= user.id %>><%= user.name %></option>  <%#取り出す際に自身のユーザー名は必要ないので、model名.where.not(条件)とすると条件に一致したレコード意外の値を取得できる%>
+            <% end %>
+        </select>
+        <input name="room[user.ids][]" type="hidden" value =<%= current_user.id%>>
       </div>
     </div>
     <div class='chat-room-form__field'>
