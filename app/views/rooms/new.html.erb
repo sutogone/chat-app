@@ -22,7 +22,7 @@
               <option value=<%= user.id %>><%= user.name %></option>  <%#取り出す際に自身のユーザー名は必要ないので、model名.where.not(条件)とすると条件に一致したレコード意外の値を取得できる%>
             <% end %>
         </select>
-        <input name="room[user.ids][]" type="hidden" value =<%= current_user.id%>>
+        <input name="room[user_ids][]" type="hidden" value =<%= current_user.id %>>
       </div>
     </div>
     <div class='chat-room-form__field'>
