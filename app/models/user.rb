@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
   validates :name, presence: :true  #バリデーションとはデータ登録の際に一定の制約を設けること
                                    #validates :カラム名, バリデーションの種類presence :trueは空のカラムを受付ない
+
+  has_many :room_users
+  has_many :rooms, through: :room_users
 end
